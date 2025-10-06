@@ -20,7 +20,7 @@ As the name says it all, it a simple full stack project which is used for orderi
     <li><a href="https://www.w3schools.com/js/" target="_blank">JavaScript</a></li>
     <li><a href="https://www.w3schools.com/bootstrap5/index.php" target="_blank">Bootstrap</a></li>
     <li><a href="https://expressjs.com/" target="_blank">ExpressJS</a></li>
-    <li><a href="https://www.w3schools.com/mysql/default.asp" target="_blank">MySQL</a></li>
+    <li><a href="https://www.w3schools.com/mongodb/" target="_blank">MongoDb</a></li>
 </ul>
 
 ## Install and Run :
