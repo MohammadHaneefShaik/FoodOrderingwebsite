@@ -43,6 +43,7 @@ function onLoad() {
 }
 
 function updateScroller() {
+  if (!scroller.target) return;
   var resized = scroller.resizeRequest > 0;
 
   if (resized) {
@@ -61,9 +62,12 @@ function updateScroller() {
     scroller.scrollRequest = 0;
   }
 
+if (scroller.target) {
   TweenLite.set(scroller.target, {
-    y: -scroller.y,
+    rotation: 0.001,
+    force3D: true,
   });
+}
 
   requestId =
     scroller.scrollRequest > 0 ? requestAnimationFrame(updateScroller) : null;
@@ -90,19 +94,24 @@ jQuery(".filters").on("click", function () {
   }, 1000);
 });
 
-document.querySelector(".filters li").addEventListener("click", onResize);
-document.querySelector(".filters li").addEventListener("click", onScroll);
+const filterItem = document.querySelector(".filters li");
+
+if (filterItem) {
+  filterItem.addEventListener("click", onResize);
+  filterItem.addEventListener("click", onScroll);
+}
 
 // Scroll to top
 
 const scrolltotop = document.querySelector(".scrolltop");
 
-scrolltotop.addEventListener("click", () =>
-  gsap.to(window, {
-    scrollTo: 0,
-  })
-);
-
+if (scrolltotop) {
+  scrolltotop.addEventListener("click", () =>
+    gsap.to(window, {
+      scrollTo: 0,
+    })
+  );
+}
 // Scroll to Section
 
 var sections = $("section"),
