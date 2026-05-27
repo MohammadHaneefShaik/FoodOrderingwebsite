@@ -15,8 +15,9 @@ const path = require("path");
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
-app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser());
 app.use(fileUpload());
@@ -25,12 +26,11 @@ app.use(fileUpload());
 const mongoose = require("mongoose");
 
 mongoose
-  .connect(process.env.MONGO_URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect(process.env.MONGO_URL)
   .then(() => console.log("MongoDB Connected"))
-  .catch((err) => console.error("MongoDB connection error:", err));
+  .catch((err) => {
+    console.error("MongoDB connection error:", err);
+  });
 
 
 /*****************************  User-End Portal ***************************/
